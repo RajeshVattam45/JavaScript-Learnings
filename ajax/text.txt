@@ -1,0 +1,2 @@
+JavaScript is an programming laungage, it is used to build a intractive web pages.
+JS will use for front end as well as back end.

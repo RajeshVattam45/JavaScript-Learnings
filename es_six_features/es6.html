@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>ES6 Features</title>
+</head>
+<body>
+    <div class="container">
+        <h3>New Features in ES6</h3>
+        <p>Feature <b>let</b>Keyword</p>
+        <p>Let Keyword introduced in 2015, it is used to declare variables.</p>
+        <p>Let keyword can start with a character, underscore(_), and the keyword declared with lowercase and uppercase,
+            and the variable should not be declared with numbers or any other special characters.</p>
+
+        <br><br>
+        <!-- examples with let keyword -->
+        <h3>Examples with let keyword</h3>
+        <p id="string"></p>
+        <p id="array"></p>
+        <p id="example-3"></p>
+        <p id="addition"></p>
+        <p id="subtraction"></p>
+
+        <br><br>
+        <!-- examples with const -->
+        <h3>Examples with const</h3>
+        <p class="bg-dark text-light" id="const-1"></p>
+        <p class="bg-dark text-light" id="const-2"></p>
+        <p class="bg-dark text-light" id="const-3"></p>
+        <p class="bg-dark text-light" id="const-4"></p>
+        <p class="bg-dark text-light" id="const-5"></p>
+
+        <br><br>
+        <!-- examples of arrow functions -->
+        <h3>Examples of arrow functions</h3>
+        <p id="arrow-1"></p>
+        <div id="add-result"></div>
+        <div id="greet-result"></div>
+        <div id="square-result"></div>
+        <div id="get-person-result"></div>
+        <div id="doubled-numbers-result"></div>
+        <div id="even-numbers-result"></div>
+        <div id="names-result"></div>
+
+        <br><br>
+        <!-- Object Destructuring -->
+        <h3>Object Destructuring</h3>
+        <div id="basic-syntax-result"></div>
+        <div id="renaming-variables-result"></div>
+        <div id="default-values-result"></div>
+        <div id="nested-objects-result"></div>
+        <div id="function-parameters-result"></div>
+        <div id="rest-syntax-result"></div>
+
+        <br><br>
+        <!-- Math Methods Examples -->
+        <h3>Math Methods Examples</h3>
+        <p><strong>Math.abs()</strong> function return the absolute value of the number</p>
+        <p id="absolute_number"></p>
+        <p id="trunc-result"></p>
+        <p id="sign-result"></p>
+        <p id="cbrt-result"></p>
+        <p id="log2-result"></p>
+        <p id="log10-result"></p>
+
+        <!-- Arrow Function -->
+         <h3>Arrow Function</h3>
+         <p id="arrow-function-result"></p>
+
+        <!-- spread and rease opearator -->
+        <h3>Spread Opearator</h3>
+        <p id="spread-operator-result"></p>
+
+        <h3>Reast Opearator</h3>
+        <p id="rest-operator-result"></p>
+
+        <!-- For of loop -->
+        <h3>For of loop </h3>
+        <p id="for-of-loop-result"></p>
+
+    </div>
+
+    <script>
+        // ES6 features let keyword.
+        let string = 'Hello World';
+        let array = [1, 2, 4, 5, 7];
+        let example_3 = 8 * 6;
+        let addition = 10 + 5;
+        let subtraction = 100 - 23;
+
+        console.log(string); // Logging the string variable
+        document.getElementById("string").innerHTML = 'String: ' + string;
+
+        console.log(array); // Logging the array variable
+        document.getElementById("array").innerHTML = 'Array: ' + array.join(", ");
+
+        console.log(example_3); // Logging the example_3 variable
+        document.getElementById("example-3").innerHTML = 'Example 3: ' + example_3;
+
+        console.log(addition); // Logging the addition variable
+        document.getElementById("addition").innerHTML = 'Addition: ' + addition;
+
+        console.log(subtraction); // Logging the subtraction variable
+        document.getElementById("subtraction").innerHTML = 'Subtraction: ' + subtraction;
+
+        // ES6 features const keyword.
+        const const_1 = 'Const keyword used to declare the variable with the constant value.';
+        const const_2 = 'Once we declare the value with const keyword the value cannot be changed.';
+        const const_3 = [1, 2, 3, 4, 5, 6];
+        const const_4 = 5 * 5;
+        const const_5 = 5 / 10;
+
+        console.log(const_1);
+        document.getElementById("const-1").innerHTML = const_1;
+
+        console.log(const_2);
+        document.getElementById("const-2").innerHTML = const_2;
+
+        console.log(const_3);
+        document.getElementById("const-3").innerHTML = 'Array: ' + const_3.join(", ");
+
+        console.log(const_4);
+        document.getElementById("const-4").innerHTML = 'Multiplication: ' + const_4;
+
+        console.log(const_5);
+        document.getElementById("const-5").innerHTML = 'Division: ' + const_5;
+
+        // Arrow functions
+        let arrow_function = (a, b) => a + b;
+        let result = arrow_function(10, 20);
+
+        console.log(result);
+        document.getElementById("arrow-1").innerHTML = 'Arrow Function Result: ' + result;
+
+        // Example 1: Basic Syntax
+        const add = (a, b) => a + b;
+        const addResult = add(2, 3);
+        console.log(addResult);
+        document.getElementById("add-result").innerHTML = "Add Result: " + addResult;
+
+        // Example 2: No Parameters
+        const greet = () => "Hello, world!";
+        const greetResult = greet();
+        console.log(greetResult);
+        document.getElementById("greet-result").innerHTML = "Greet Result: " + greetResult;
+
+        // Example 3: Single Parameter
+        const square = n => n * n;
+        const squareResult = square(4);
+        console.log(squareResult);
+        document.getElementById("square-result").innerHTML = "Square Result: " + squareResult;
+
+        // Example 4: Returning Objects
+        const getPerson = () => ({ name: "Rajesh", age: 21 });
+        const personResult = getPerson();
+        console.log(personResult);
+        document.getElementById("get-person-result").innerHTML = "Person Result: " + JSON.stringify(personResult);
+
+        // Example 5: Arrow Functions as Callbacks (with map)
+        const numbers = [1, 2, 3, 4];
+        const doubledNumbers = numbers.map(n => n * 2);
+        console.log(doubledNumbers);
+        document.getElementById("doubled-numbers-result").innerHTML = "Doubled Numbers: " + doubledNumbers.join(", ");
+
+        // Example 6: Arrow Functions as Callbacks (with filter)
+        const numbers2 = [1, 2, 3, 4, 5];
+        const evenNumbers = numbers2.filter(n => n % 2 === 0);
+        console.log(evenNumbers);
+        document.getElementById("even-numbers-result").innerHTML = "Even Numbers: " + evenNumbers.join(", ");
+
+        // Example 7: Chaining Methods with Arrow Functions
+        const users = [
+            { name: "Rajesh", age: 21 },
+            { name: "Lokesh", age: 20 },
+            { name: "Murali", age: 16 }
+        ];
+        const names = users
+            .filter(user => user.age > 15)
+            .map(user => user.name);
+        console.log(names);
+        document.getElementById("names-result").innerHTML = "Names: " + names.join(", ");
+
+        // Object destructuring
+
+        // Example 1: Basic Syntax
+        const person1 = {
+            name: "Rajesh",
+            age: 23,
+            city: "India"
+        };
+
+        const { name: name1, age: age1, city: city1 } = person1;
+
+        console.log(name1, age1, city1);
+        document.getElementById("basic-syntax-result").innerHTML = `Name: ${name1}, Age: ${age1}, City: ${city1}`;
+
+        // Example 2: Renaming Variables
+        const person2 = {
+            name: "Lokesh",
+            age: 21,
+            city: "India"
+        };
+
+        const { name: personName, age: personAge, city: personCity } = person2;
+
+        console.log(personName, personAge, personCity);
+        document.getElementById("renaming-variables-result").innerHTML = `Name: ${personName}, Age: ${personAge}, City: ${personCity}`;
+
+        // Example 3: Default Values
+        const person3 = {
+            name: "Murali",
+            age: 22
+        };
+
+        const { name: name3, age: age3, city: city3 = "Unknown" } = person3;
+
+        console.log(name3, age3, city3);
+        document.getElementById("default-values-result").innerHTML = `Name: ${name3}, Age: ${age3}, City: ${city3}`;
+
+        // Example 4: Nested Objects
+        const person4 = {
+            name: "Ravi",
+            age: 21,
+            address: {
+                city: "India",
+                zip: "12345"
+            }
+        };
+
+        const { name: name4, age: age4, address: { city: city4, zip } } = person4;
+
+        console.log(name4, age4, city4, zip);
+        document.getElementById("nested-objects-result").innerHTML = `Name: ${name4}, Age: ${age4}, City: ${city4}, ZIP: ${zip}`;
+
+        // Example 5: Function Parameters
+        function displayPerson({ name, age }) {
+            console.log(name, age);
+            document.getElementById("function-parameters-result").innerHTML = `Name: ${name}, Age: ${age}`;
+        }
+
+        const person5 = {
+            name: "Suresh",
+            age: 28
+        };
+
+        displayPerson(person5);
+
+        // Example 6: Rest Syntax
+        const person6 = {
+            name: "Prakash",
+            age: 25,
+            city: "Chennai",
+            occupation: "Developer"
+        };
+
+        const { name: name6, ...rest } = person6;
+
+        console.log(name6, rest);
+        document.getElementById("rest-syntax-result").innerHTML = `Name: ${name6}, Rest: ${JSON.stringify(rest)}`;
+
+        // Math methods
+        let absolute_number = Math.abs(-45.6);
+        let trunc_result = Math.trunc(3.14);
+        let sign_result = Math.sign(-45);
+        let cbrt_result = Math.cbrt(125);
+        let log2_result = Math.log2(8);
+        let log10_result = Math.log10(1000);
+
+        console.log(absolute_number);
+        document.getElementById("absolute_number").innerHTML = 'Absolute Number: ' + absolute_number;
+
+        console.log(trunc_result);
+        document.getElementById("trunc-result").innerHTML = 'Trunc Result: ' + trunc_result;
+
+        console.log(sign_result);
+        document.getElementById("sign-result").innerHTML = 'Sign Result: ' + sign_result;
+
+        console.log(cbrt_result);
+        document.getElementById("cbrt-result").innerHTML = 'Cube Root Result: ' + cbrt_result;
+
+        console.log(log2_result);
+        document.getElementById("log2-result").innerHTML = 'Log2 Result: ' + log2_result;
+
+        console.log(log10_result);
+        document.getElementById("log10-result").innerHTML = 'Log10 Result: ' + log10_result;
+
+        // Example: Basic Arrow Function
+        const adding = (x, y) => x + y;
+        console.log(adding(2, 3));
+        document.getElementById("arrow-function-result").innerHTML = `Addition Result: ${adding(2, 3)}`;
+
+        // Example: Spread Operator
+        const arr1 = [1, 2, 3];
+        const arr2 = [...arr1, 4, 5];
+        console.log(arr2);
+        document.getElementById("spread-operator-result").innerHTML = `Spread Array: ${arr2.join(", ")}`;
+
+        // Example: Rest Operator
+        const sum = (...numbers) => numbers.reduce((total, num) => total + num, 0);
+        console.log(sum(1, 2, 3, 4));
+        document.getElementById("rest-operator-result").innerHTML = `Sum: ${sum(1, 2, 3, 4)}`;
+
+        // Example: For/of Loop
+        const fruits = ["apple", "banana", "orange"];
+        let fruitList = "";
+        for (const fruit of fruits) {
+            fruitList += `${fruit} `;
+        }
+        console.log(fruitList);
+        document.getElementById("for-of-loop-result").innerHTML = `Fruits: ${fruitList}`;
+
+
+    </script>
+</body>
+</html>

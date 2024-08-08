@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immutability</title>
+</head>
+<body>
+    <div class="container">
+        <p id="addition"></p>
+        <p id="subtraction"></p>
+        <p id="multiplication"></p>
+        <p id="cube"></p>
+        <p id="square"></p>
+    </div>
+
+    <script>
+
+        // Immutability: Immutability is a on of the cocept, one a value is created it can't change.
+        // the value will be remain constant after declearing the value.
+        // declearing a const variable.
+        const name = "JavaScript";
+
+        // This would throw an error as 'name' is constant.
+        // name = "Java";
+
+        // Declearing a const array.
+        const numbers = [1, 2, 3];
+
+        // This would mutate the array.
+        // numbers = [8];
+
+        // To create a new array with an added element:
+        const newNumbers = [...numbers, 4];
+
+        // Pure functions.
+        // pure functions are the functions this will return the same from the same out putd,
+        // produces no side efforts, (it won't change any extranel variables and data).
+
+        // Addition.
+        function add(num_1, num_2){
+            return num_1 + num_2;
+        }
+        const sum = add(5, 9);
+        const addition_div = document.getElementById("addition");
+        addition_div.innerHTML = sum;
+        console.log(sum);
+
+        // Subtraction.
+        function subtraction(num_1, num_2){
+            return  + num_1 - num_2;
+        }
+        let subtraction_of_two = subtraction(10, 20);
+        const subtraction_div = document.getElementById("subtraction");
+        subtraction_div.innerHTML = subtraction_of_two;
+        console.log(subtraction_of_two);
+
+        // multiplication.
+        function multiplication(num_1, num_2){
+            return num_1 * num_2;
+        }
+        let multiplication_value = multiplication(8, 6);
+        const multiplication_div = document.getElementById("multiplication");
+        multiplication_div.innerHTML = multiplication_value;
+        console.log(multiplication_value);
+
+        const numbers_array = [2, 3, 4, 5, 6];
+
+        // Squares.
+        function squares(numbers_array){
+            return numbers_array.map(element => element * element);
+        }
+        let total_squares = squares(numbers_array);
+        let syuare_div = document.getElementById("square");
+        syuare_div.innerHTML = total_squares;
+        console.log(total_squares);
+
+        // cubes.
+        function cubes(numbers_array){
+            return numbers_array.map(element => element * element * element);
+        }
+        let cube_array = cubes(numbers_array);
+        const cube_div = document.getElementById("cube");
+        cube_div.innerHTML = cube_array;
+        console.log(cube_array);
+
+        // Triangle structor.
+        function triangle(rows) {
+            let patterns = '';
+            for (let i = 1; i <= rows; i++) {
+                let pattern = ' '.repeat(rows - i) + '*'.repeat(2 * i - 1);
+                patterns += pattern + '\n';
+            }
+            return patterns;
+        }
+
+        const trianglePattern = triangle(5);
+        console.log(trianglePattern);
+
+        // area and length for the triangle(1/2 * b * h).
+        const base = 10;
+        const height = 20;
+
+        function findAreaOfTriangle(base, height){
+            return 1/2 * base * height;
+        }
+        let area_of_triangle = findAreaOfTriangle(base, height);
+        console.log(area_of_triangle);
+
+        // mapping two arrays using pure functions.
+        let mapping_array_1 = ['JavaScript', 'Drupal', 'PHP', 'Java', 'jQuery'];
+        let mapping_array_2 = [3, 9, 3, 4, 5];
+
+        function mappingFunction(element_1, element_2){
+            return element_1.map((element, index)=>{
+                return {
+                    name: element,
+                    value: element_2[index]
+                };
+            });
+        }
+        let mappig_array_value = mappingFunction(mapping_array_1, mapping_array_2);
+        console.log(mappig_array_value);
+
+        // Pusing the some values into existing array.
+        let array_1 = [1, 2, 3, 4, 5, 6];
+        let array_2 = 'my name is JavaScript';
+
+        let merge_array= array_1.push(9);
+        // console.log(array_1);
+        // using map function pusing the values.
+        let newArray = array_1.concat(11, 22, 33, 44);
+        console.log(newArray);
+
+    </script>
+</body>
+</html>

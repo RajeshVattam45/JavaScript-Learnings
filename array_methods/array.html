@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Methods</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">Array Methods</h1>
+        <h3>Ways to define the array</h3>
+        <li>Using square brackets [] </li>
+        <p>EX: let array = [1, 2, 3, 4, 5, 6, 7];</p>
+        <li><u> Using the <strong>new Array</strong> keyword</u></li>
+        <p>EX: let new_array = new Array(1, 2, 3, 4);</p>
+        <li>Array object "{}"</li>
+        <p>EX: let array_object = {
+            name: 'apple',
+            name: 'mango',
+            name2: 'name2',
+            }</p>
+        <br><br>
+        <p><u>Using map() functions concating the both arrays</u></p>
+        <p id="result-map"></p>
+        <p><u>Using at() function to get the first and & last element in array</u></p>
+        <p>First Element in array</p>
+        <li id="at-first"></li><br>
+        <p>Lat Element in array</p>
+        <li id="at-last"></li><br><br>
+        <p><u> Using filter() method moving the all zeros to left side of array</u></p>
+        <li id="move-left-side-array"></li>
+        <p><u>Filtering the even numbers in this array [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]</u></p>
+        <li id="even-num"></li>
+        <p><u>Filtering the numbers from this array "[1, 2, 'java', 3, 'hellow', 4, 5, 6, 'script', 7, 8, true,9, false,
+                0]"</u></p>
+        <li id="int-values"></li>
+        <p><u>Seperate the string and array values from this array "[1, 2, 'java', 3, 'hellow', 4, 5, 6, 'script', 7, 8,
+                true,9, false, 0]"</u></p>
+        <ul>
+            <li id="array_values"></li>
+            <li id="str_values"></li>
+            <li id="bool_values"></li>
+        </ul><br><br>
+        <p><u>Counting Instances of Values in an Object in this array ['apple', 'banana', 'orange', 'apple', 'orange',
+                'banana', 'banana']</u></p>
+        <p id="instances-values"></p>
+        <p><u>Conver array to string, this is the array </u>['hwllow', 'javascript', 'its a', 'programming', 'laungage']
+        </p>
+        <p id="array_join"></p><br>
+
+        <p><u>The find method in JavaScript is used to search through an array and return the first element that
+                satisfies a
+                provided testing function. If no elements satisfy the testing function, it returns undefined.</u></p>
+        <p id="person_array"></p>
+        <p id="fruits_find"></p><br>
+        <p><u>The splice() method adds and/or removes array elements.</u></p>
+        <p id="array_splice"></p><br>
+        <p><u>The unshift method in JavaScript is used to add one or more elements to the beginning of an 
+            array and returns the new length of the array. This method modifies the original array.</u></p>
+        <p id="array_unshift"></p>
+    </div>
+
+    <script>
+        // Array: arrays are used to store the mutiple values in a single variable.
+        // we can define an array multiple ways.
+        let array = [1, 2, 3, 4, 5, 6, 7];
+        console.log(array);
+        let string_array = ['hellow', 'JavaScript', 'Array'];
+        console.log(string_array);
+
+        let new_array = new Array(1, 2, 3, 4);
+        console.log(new_array);
+
+        // Array object.
+        let array_object = {
+            name: 'apple',
+            name: 'mango',
+            name2: 'name2',
+            name3: 'name3',
+            name4: 'name4',
+            name5: 'name5'
+        }
+        console.log(array_object);
+
+        // Array length method used to count the size/length of the array.
+        console.log('length of the array' + array.length);
+        console.log('the size/length of the srting_array is ' + string_array.length);
+        let merging_two_arrays = [...new_array, ...string_array];
+        console.log('Merging two arrays ' + merging_two_arrays);
+
+        // usig map function concat the data.
+        let data = [];
+        let array_object_data = Object.values(array_object).map(element => {
+            data.push(element);
+        });
+        let concat_both_arrays = new_array.concat(data);
+        document.getElementById("result-map").innerHTML = concat_both_arrays;
+        console.log('combination of the data ' + concat_both_arrays);
+
+
+        // at() function used to get the elements based on the index.
+        const cars = new Array('BMW', 'AUdi', 'Honda', 'Toyoto', 'SUV');
+        console.log(cars.at(2));
+        console.log(cars.at(4));
+        // to get the first element of array.
+        first_ele_array = cars.at() + ' get the first element of the item';
+        last_ele_array = cars.at(-1) + ' getting the last element of the array';
+        console.log(cars.at() + ' get the first element of the item');
+        console.log(cars.at(-1) + ' getting the last element of the array');
+        document.getElementById("at-first").innerHTML = first_ele_array;
+        document.getElementById("at-last").innerHTML = last_ele_array;
+
+        // filter method is an array method it will create an new array with the passes records or data
+        // implemented by provided function.
+        // This method doesn't change the original array.
+
+        // Using filter() method moving the all zeros to left side of array.
+        const number_array = [1, 3, 4, 5, 0, 0, 0, 3, 9, 6];
+        let arry_zer = [];
+        let array_non_zero = [];
+        number_array.filter(element => {
+            if (element === 0) {
+                arry_zer.push(element);
+            }
+            else {
+                array_non_zero.push(element);
+            }
+        });
+        let metge_array = [...arry_zer, ...array_non_zero];
+        let array_concat = arry_zer.concat(array_non_zero);
+        document.getElementById("move-left-side-array").innerHTML = array_concat;
+        console.log(metge_array);
+        console.log(array_concat);
+
+        // Filter the even numbers.
+        const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+        const evenNumbers = numbers.filter(number => number % 2 === 0);
+        document.getElementById("even-num").innerHTML = evenNumbers;
+
+        console.log(evenNumbers);
+
+        // filter the int values.
+        const int_str = [1, 2, 'java', 3, 'hellow', 4, 5, 6, 'script', 7, 8, true, 9, false, 0];
+        const intValues = int_str.filter(item => Number.isInteger(item));
+        document.getElementById("int-values").innerHTML = intValues;
+        console.log('Filtering only INT values ' + intValues);
+
+        let combination_values = new Array('hellow', '2', '4', true, 9, false, 1);
+        const convert_int = combination_values.map(element => {
+            if (typeof element === 'string' && !isNaN(element)) {
+                return parseInt(element, 10);
+            }
+            return element;
+        })
+        console.log('converting string to int' + convert_int);
+        const filter_values = convert_int.filter(element => Number.isInteger(element));
+        // OR
+        const second_approach = convert_int.filter(element => {
+            return typeof element === 'number';
+        });
+        console.log('second approach: ' + second_approach);
+        console.log('This is the filter values' + filter_values);
+
+        // seperate the string and array values.
+        // using both map an dfilter functions.
+        array_values = [];
+        str_values = [];
+        bool_values = [];
+        int_str.map(element => {
+            if (typeof element === 'number') {
+                array_values.push(element);
+            } else if (typeof element === 'string') {
+                str_values.push(element);
+            } else {
+                bool_values.push(element);
+            }
+        });
+        console.log('array values using map() function: ' + array_values);
+        console.log('string values using map() function: ' + str_values);
+        console.log('other extra values using map() function: ' + bool_values);
+        document.getElementById("array_values").innerHTML = array_values;
+        document.getElementById("str_values").innerHTML = str_values;
+        document.getElementById("bool_values").innerHTML = bool_values;
+
+
+        int_str.filter(element => {
+            if (typeof element === 'number') {
+                array_values.push(element);
+            }
+            else if (typeof element === 'string') {
+                str_values.push(element);
+            }
+            else {
+                bool_values.push(element);
+            }
+        })
+        console.log('array values using filter() function: ' + array_values);
+        console.log('string values using filter() function: ' + str_values);
+        console.log('other extra values using filter() function: ' + bool_values);
+
+        // array method that executes a reducer function on each element of the array,
+        // resulting in a single output value.
+        const numbers_array = [1, 2, 3, 4, 5];
+
+        const sum = numbers_array.reduce((values, currentValue) => {
+            // console.log('current values in array' + values);
+            return values + currentValue;
+        }, 0);
+        console.log(sum);
+
+        // Counting Instances of Values in an Object
+        const fruits = ['apple', 'banana', 'orange', 'red', 'papaya', 'greaps', 'mango'];
+
+        const countFruits = fruits.reduce((accumulator, fruit) => {
+            if (!accumulator[fruit]) {
+                accumulator[fruit] = 0;
+            }
+            accumulator[fruit]++;
+            return accumulator;
+        }, {});
+
+        console.log(countFruits);
+        document.getElementById("instances-values").innerHTML = JSON.stringify(countFruits);
+        const number_array_ = [[1, 2], [3, 4], [5, 6]];
+
+        const flattenedArray = number_array_.reduce((accumulator, currentValue) => {
+            return accumulator.concat(currentValue);
+        }, []);
+
+        console.log(flattenedArray);
+
+        // join() method return an as a string.
+        let array_join = ['hwllow', 'javascript', 'its a', 'programming', 'laungage'];
+        const convert_to_string = array_join.join(' ');
+        document.getElementById("array_join").innerHTML = convert_to_string;
+        console.log(convert_to_string);
+
+        // The find method in JavaScript is used to search through an array and return the first element that satisfies a 
+        // provided testing function. If no elements satisfy the testing function, it returns undefined.
+        const people_object = [
+            { name: 'Rajesh', age: 21 },
+            { name: 'Lokesh', age: 25 },
+            { name: 'Murali', age: 28 },
+            { name: 'Sree', age: 30 }
+        ];
+
+        const person_array = people_object.find(person => person.age > 25);
+        document.getElementById("person_array").innerHTML = JSON.stringify(person_array);
+
+        console.log(person_array);
+
+        const fruits_find = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
+
+        const fruit_fined = fruits_find.find(fruit => fruit.startsWith('c'));
+        document.getElementById("fruits_find").innerHTML = fruit_fined;
+
+        console.log(fruit_fined);
+
+        // The splice() method adds and/or removes array elements.
+        const array_splice = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 11, 22, 33, 44, 55, 66, 77, 88, 99];
+        splice_to_ten = array_splice.splice(0, 10);
+        document.getElementById("array_splice").innerHTML = splice_to_ten;
+        console.log(splice_to_ten);
+
+        // The unshift method in JavaScript is used to add one or more elements to the beginning of an 
+        // array and returns the new length of the array. This method modifies the original array.
+
+        const unshift_array = ['an', 'popular', 'programming', 'laungage'];
+        let adding_values_to_array = unshift_array.unshift('JavaScript', 'is');
+        console.log(unshift_array);
+        document.getElementById("array_unshift").innerHTML = unshift_array;
+        const join_unshift_array = unshift_array.join(' ');
+        console.log(join_unshift_array);
+    </script>
+</body>
+
+</html>

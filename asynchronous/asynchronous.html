@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous JavaScript Examples</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Asynchronous JavaScript Examples</h1>
+        <p class="text-white bg-info p-4 font-weight-bold">Asynchronous JS: With asynchronous code, multiple tasks can execute at the same time while tasks in the background finish. 
+            This is what we call non-blocking code. 
+            The execution of other code won't stop while an asynchronous task finishes its work.
+        </p>
+
+        <div class="persons-data" id="persons-data">
+            <h3 class="text-secondary p-1  text-light text-center bg-dark font-weight-bold">Displating the data after 8 seconds</h3>
+
+        </div>
+
+        <div>
+            <h3 class="text-center p-1 bg-lightgray border rounded border-primary">Displaying the data after 5 seconds</h3>
+            <p id="text-data"></p>
+        </div>
+
+        <div>
+            <h3 class="text-center p-1 bg-secondary text-light font-weight-bold">Displaying the data without any time set</h3>
+            <p id="initiall-data"></p>
+        </div>
+
+        <div>
+            <h3 class="bg-info text-center p-1 text-light font-weight-bold">Displaying the data after 2 seconds</h3>
+            <p id="after-two-seconds"></p>
+        </div>
+        <div>
+            <h3>Sum of 5  and 9</h3>
+            <p id="addition"></p>
+        </div>
+    </div>
+
+    <script>
+
+        // displaying the data after 5 sec.
+        function displayigData(){
+            setTimeout(() =>{
+                let text = 'JavaScript asynchronous functions';
+                let container = document.getElementById("text-data");
+                container.innerHTML += text;
+            }, 5000);
+        }
+        displayigData();
+        
+        let persons_data = [
+        { name: 'Rajesh', age: 22},
+        { name: 'Lokesh', age: 21},
+        { name: 'Murali', age: 16},
+        { name: 'Sree', age: 25}
+        ];
+        function fetData(element){
+            setTimeout(() => {
+                element.forEach(value => {
+                    let contain = document.getElementById("persons-data");
+                    contain.innerHTML += `Name : ${value.name} and Age: ${value.age} <br>`;
+                    console.log(`Name : ${value.name} and Age: ${value.age}`);
+                });
+            }, 8000);
+        }
+        fetData(persons_data);
+
+        function initiallyDisplaying(){
+            document.getElementById("initiall-data").innerHTML = 'Displaying data while page loads';
+        }
+        initiallyDisplaying();
+
+        const FruitsArray = ['Apple', 'Mange', 'Banana', 'Orange'];
+
+        function displayArray(element){
+            let container = document.getElementById("after-two-seconds");
+            setTimeout(() => {
+                element.map((e, index) =>{
+                container.innerHTML += e + '=>' + index + '<br>';
+            });
+            }, 2000);
+        }
+        displayArray(FruitsArray);
+
+        function addition(num_1, num_2) {
+            return num_1 + num_2;
+        }
+
+        setTimeout(() => {
+            const result = addition(5, 9);
+            document.getElementById("addition").innerHTML = result;
+        }, 10000);
+    </script>
+</body>
+
+</html>

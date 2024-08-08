@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Higher Order Functions</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="font-weight-bold bg-dark p-1 m-1 text-center text-light">Higher Order Functions</h2>
+
+        <p class="text-light bg-info font-weight-bold p-1 m-1">Higher functions are such functions that take one or more functions as arguments, or return a function as their result. There are several different types of higher order functions like <strong class="text-light p-1 bg-danger">map(), filter(), reduce()</strong> functions.</p>
+
+        <div>
+            <p class="text-center text-light font-weight-bold bg-secondary">Area & Radius of Circles</p>
+            <p id="area-result"></p>
+            <p id="diameter-result"></p>
+        </div>
+
+        <div>
+            <h4 class="text-center text-dark bg-light p-2">Map Function Examples</h4>
+            <p id="squared-numbers"></p>
+            <p id="fruit-names"></p>
+            <p id="product-prices"></p>
+            <p id="matrix-result"></p>
+        </div>
+
+        <div>
+            <h4 class="text-center text-dark bg-light p-2">Filter Function Example</h4>
+            <p id="merged-array"></p>
+        </div>
+
+        <div>
+            <h4 class="text-center text-dark bg-light p-2">Reduce Function Example</h4>
+            <p id="sum-result"></p>
+        </div>
+    </div>
+
+    <script>
+        // Calculate area and diameter of circles
+        const radii = [4, 6, 9];
+
+        function area(element) {
+            return Math.PI * element * element;
+        }
+
+        function setDiameter(element) {
+            return 2 * element;
+        }
+
+        function calculateValues(value, type) {
+            const output = [];
+            for (let index = 0; index < value.length; index++) {
+                const element = type(value[index]);
+                output.push(element);
+            }
+            return output;
+        }
+
+        const for_area = calculateValues(radii, area);
+        const for_diameter = calculateValues(radii, setDiameter);
+
+        // Display results on the page
+        document.getElementById("area-result").innerHTML = `Areas: ${for_area.join(', ')}`;
+        document.getElementById("diameter-result").innerHTML = `Diameters: ${for_diameter.join(', ')}`;
+
+        // Log results to the console
+        console.log('Areas: ', for_area);
+        console.log('Diameters: ', for_diameter);
+
+        // Map() examples
+        const numbers = [2, 3, 4, 5, 6];
+
+        const squareNumbers = numbers.map(function (number) {
+            return number * number;
+        });
+        document.getElementById("squared-numbers").innerHTML = `Squared Numbers: ${squareNumbers.join(', ')}`;
+        console.log('Squared Numbers: ', squareNumbers);
+
+        const fruits = ['Apple', 'Banana', 'Mango', 'Orange', 'Grapes'];
+
+        const fruitNames = fruits.map(function (fruit) {
+            return `Fruit name is: ${fruit}`;
+        });
+        document.getElementById("fruit-names").innerHTML = fruitNames.join('<br>');
+        console.log('Fruit Names: ', fruitNames);
+
+        const products = ['Product1', 'Product2', 'Product3', 'Product4', 'Product5', 'Product6'];
+        const prices = [20, 44, 67, 45, 100, 70];
+
+        const get_products = products.map((product, index) => getProducts(product, prices[index]));
+
+        function getProducts(product, price) {
+            return `The Product: ${product} | Price: $${price}`;
+        }
+
+        document.getElementById("product-prices").innerHTML = get_products.join('<br>');
+        console.log('Product Prices: ', get_products);
+
+        const matrixA = [
+            [1, 4, 6],
+            [2, 5, 7],
+            [4, 9, 2]
+        ];
+
+        const matrixB = [
+            [4, 8, 6],
+            [2, 8, 4],
+            [1, 0, 5]
+        ];
+
+        const multiplyMatrices = (matrixA, matrixB) => {
+            return matrixA.map((row, i) => {
+                return matrixB[0].map((_, j) => {
+                    return row.reduce((sum, element, k) => {
+                        return sum + element * matrixB[k][j];
+                    }, 0);
+                });
+            });
+        };
+
+        const resultMatrix = multiplyMatrices(matrixA, matrixB);
+        document.getElementById("matrix-result").innerHTML = `Matrix Multiplication Result: <br>${resultMatrix.map(row => row.join(', ')).join('<br>')}`;
+        console.log('Matrix Multiplication Result: ', resultMatrix);
+
+        // Filter() example
+        const number_array = [1, 3, 4, 5, 0, 0, 0, 3, 9, 6];
+        const zeroArray = [];
+        const nonZeroArray = [];
+        number_array.filter(element => {
+            if (element === 0) {
+                zeroArray.push(element);
+            } else {
+                nonZeroArray.push(element);
+            }
+        });
+        const mergedArray = [...zeroArray, ...nonZeroArray];
+        document.getElementById("merged-array").innerHTML = `Merged Array (Zeros First): ${mergedArray.join(', ')}`;
+        console.log('Merged Array (Zeros First): ', mergedArray);
+
+        // Reduce() example
+        const sum = number_array.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        document.getElementById("sum-result").innerHTML = `Sum of Array Elements: ${sum}`;
+        console.log('Sum of Array Elements: ', sum);
+    </script>
+</body>
+</html>

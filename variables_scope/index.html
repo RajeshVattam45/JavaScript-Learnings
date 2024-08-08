@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables & Scopes</title>
+</head>
+
+<body>
+    <p><b> Accessing the undecleared Variables </b></p>
+    <p id="x"></p>
+    <p id="numbers"></p>
+    <p id="array"></p>
+    <p id="string"></p>
+
+    <br><br>
+    <p><b> Accessing the VAR Variables </b></p>
+    <p id="data_2"></p>
+    <p id="data_3"></p>
+
+    <br><br>
+    <p id="content"></p>
+    <p id="let-variable"></p>
+    <p id="var-variable2"></p>
+    <p id="const-variable"></p>
+    <p id="var-variables"></p>
+    <p id="local-scope">Local Scope</p>
+    <p is="localScope"></p>
+    <p id="global-scope"></p>
+    <p id="var"></p>
+    <p id="let"></p>
+    <p id="const"></p>
+    <p id="block-scope"></p>
+    <p id="let_int"></p>
+    <p id="const_string"></p>
+    <p id="function-scope"></p>
+    <p id="product_code"></p>
+    <p id="product_name"></p>
+    <p id="rating"></p>
+    <p id="message"></p>
+
+    <script>
+
+        // JavaScript variables.
+        // Variables are used to store the data.
+        // In JS 4 ways to declear the variables var, let, const.
+
+
+        // undecleared variables.
+        x = 100;
+        string = 'string contain charactors';
+        array = [1, 2, 4];
+        number = 2.5;
+
+        console.log(x);
+        console.log(string);
+        console.log(array);
+        console.log(number);
+
+        document.getElementById("x").innerHTML = x;
+        document.getElementById("string").innerHTML = string;
+        document.getElementById("array").innerHTML = array;
+        document.getElementById("numbers").innerHTML = number;
+        // var keyword used to declear the variable, for older version brwser using var.
+        var data = 'Variable declearing with var keyword';
+        var data_1 = 'Second example for the declearing the variable with var keyword'
+        var data_2 = ['Apple', 'Banana', 'Mango'];
+        var data_3 = [1, 2, 3, 4, 5];
+        // console.log(data);
+        document.getElementById("let-variable").innerHTML = data;
+        document.getElementById("var-variable2").innerHTML = data_1;
+        document.getElementById("data_2").innerHTML = data_2;
+        document.getElementById("data_3").innerHTML = data_3;
+
+        // let keyword used to declear the variable, it is interduced in 2015.
+        let fruits_array = ['Apple', 'Banana', 'Mango'];
+        console.log(fruits_array);
+
+        // const keyword used to declear the variable, once declear the variable using const we can't change the value.
+        const variable = [1, 2, 3, 4, 5, 6];
+        console.log(variable);
+
+        // type of scopes.
+        // 1. Variable scope
+        // 2. Block scope.
+        // 3. Function scope.
+        // 4. Local scope.
+        // 5. Global scope.
+
+        // Block scope.
+        // let, const keywords had block scope, these keyword are intruduced in 2015.
+        // Variables that are declared inside a { } block cannot be accessed from outside the block.
+        let let_ = [1, 2, 3, 4, 5];
+        const _const = ['1', 'e', 'd', 'm'];
+
+        function blockScope() {
+            if (true) {
+                let let_int = [1, 2, 3, 4, 5];
+                const const_string = ['1', 'e', 'd', 'm'];
+                document.getElementById("block-scope").innerHTML = 'Examples of block scope';
+                document.getElementById("let_int").innerHTML = let_int;
+                document.getElementById("const_string").innerHTML = const_string;
+                console.log(let_int);
+                console.log(const_string);
+            }
+            // console.log(let_int);// throw an error because accesing the variable outide of the {}.
+            // console.log(const_string);// throw an error because accesing the variable outide of the {}.
+        } blockScope();
+
+
+        // Global scope
+        // If a variable decleared outside of any function has global scope we can access any where in the file. 
+        // let, var, const.
+        var _var = 'Has global scope';
+
+        function globalScope() {
+            // _var variable already defined outside function, now calling with in the function.
+            console.log(_var);
+            console.log(let_); // already decleared outside of the function.
+            console.log(_const);
+            document.getElementById("global-scope").innerHTML = 'Examples of Global scope';
+            document.getElementById("var").innerHTML = _var;
+            document.getElementById("let").innerHTML = let_;
+            document.getElementById("const").innerHTML = _const;
+
+        } globalScope();
+
+        // Function scope.
+        // Every function has there own scopes, we can declear the variables using let, const, var.
+        // Once declear the variable with in the function we can't access the out side of the function.
+
+        function functionScope() {
+            let product_name = 'Antibodies';
+            var product_code = 'NB100-2220';
+            const rating = 3.5;
+            document.getElementById("function-scope").innerHTML = 'Examples of function scope';
+            document.getElementById("product_name").innerHTML = product_name;
+            document.getElementById("product_code").innerHTML = product_code;
+            document.getElementById("rating").innerHTML = rating;
+
+            console.log(product_name);
+            console.log(product_code);
+            console.log(rating);
+        } functionScope();
+        // Decleared the variables inside the function and accessing out side function it will throw an error.
+        // console.log(product_name);
+        // console.log(product_code);
+        // console.log(rating);
+
+        // Local scope.
+        // A variable has deleared inside of the function it has local scope.
+        // Local variables are created when a function starts and deleted when the function is executed.
+
+        function greet() {
+            let message = "Hello, world!";
+            document.getElementById("message").innerHTML = message;
+            console.log(message);
+        }
+
+        greet();
+        console.log(message);
+
+    </script>
+</body>
+
+</html>

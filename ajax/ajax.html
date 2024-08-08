@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>AJAX</title>
+    <style>
+        .card {
+            width: 300px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contain">
+        <div id="text-file-data"></div>
+    </div>
+    <div>
+        <h2>Fetching the data from ajax text file</h2>
+        <p id="text-content"></p>
+    </div>
+    <div id="card-container"></div>
+    <script>
+        // AJAX: ajax stands for asynchronous javascript xml object.
+        // AJAX is a combination of technologies like HTML, JavaScript, CSS, XML, DOM, etc.
+        // AJAX is used to dynamically insert data on web pages, making quick background calls to servers
+        // to retrieve data and then update small portions on the webpage without refreshing the page.
+
+        // AJAX makes use of a browser's built-in XMLHttpRequest object to request data from a
+        // Web Server and HTML DOM to display or use the data.
+
+        // When an event occurs, an XMLHttpRequest object is created, which sends the request to the
+        // server. The server processes the request and sends back the response to the browser. After retrieving the response, 
+        // JavaScript processes the response and displays or updates the particular section on the webpage.
+
+        // Using AJAX to read the text.txt file and fetch the data and update the section.
+        document.addEventListener('DOMContentLoaded', function () {
+            // First AJAX request to read the text.txt file and update the section.
+            const xhr1 = new XMLHttpRequest();
+            xhr1.open('GET', 'text.txt', true);
+            xhr1.onreadystatechange = function () {
+                if (xhr1.readyState === 4 && xhr1.status === 200) {
+                    document.getElementById("text-file-data").innerHTML = xhr1.responseText;
+                } else if (xhr1.readyState === 4) {
+                    document.getElementById("text-file-data").innerHTML = 'Failed to Load The Content';
+                }
+            };
+            xhr1.send();
+
+            // Second AJAX request to fetch data from the API and update the card container.
+            const xhr2 = new XMLHttpRequest();
+            xhr2.open('GET', 'https://api.escuelajs.co/api/v1/products', true);
+            xhr2.onreadystatechange = function () {
+                let container = document.getElementById("card-container");
+
+                if (xhr2.readyState === 4 && xhr2.status === 200) {
+                    // Parse the JSON string into a JavaScript object.
+                    let data = JSON.parse(xhr2.responseText);
+                    let cardHtml = '';
+                    let slideData = data.slice(0, 16);
+
+                    slideData.forEach(element => {
+                        cardHtml += `
+                <div class="col-md-3">
+                    <div class="card mt-3 border rounded">
+                        <div class="card-id text-white fw-bold bg-dark text-center">${element.id}</div>
+                        <div class="card-title fw-bold w-100">${element.title}</div>
+                        <div class="card-description">${element.description}</div>
+                        <div class="card-image">
+                            <img class="w-100 h-100" src="${element.images[0]}" alt="${element.title}">
+                        </div>
+                    </div>
+                </div>`;
+                    });
+
+                    container.innerHTML = `
+            <div class="row">
+                ${cardHtml}
+            </div>`;
+                } else if (xhr2.readyState === 4) {
+                    container.innerHTML = 'Failed to fetch data';
+                }
+            };
+            xhr2.send();
+        });
+
+        // using the ajax getting the data from the text file.
+        document.addEventListener('DOMContentLoaded', function () {
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('GET', 'ajax.txt', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let data = xhr.responseText;
+                    const container = document.getElementById("text-content");
+
+                    container.innerHTML += data;
+                }
+            }
+            xhr.send();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Closures</title>
+</head>
+
+<body>
+
+    <h3>Closure Examples</h3>
+    <div id="output1"></div>
+    <div id="output2"></div>
+    <div id="output3"></div>
+    <div id="output4"></div>
+    <div id="output5"></div>
+    <div id="output6"></div>
+    <div id="output7"></div>
+
+    <script>
+        // Closures: A function defined inside another function, 
+        // the inner function has access to the variables and scope of the outer function.
+
+        // Example 1
+        function outer() {
+            let message = "JavaScript Closures";
+            function inner() {
+                console.log(message);
+                document.getElementById("output1").innerHTML = `Example 1: ${message}`;
+            }
+            inner();
+        }
+        outer();
+
+        // Example 2
+        function outerFunction() {
+            let outerVariable = 'I am from outerFunction';
+
+            function innerFunction() {
+                console.log(outerVariable);
+                document.getElementById("output2").innerHTML = `Example 2: ${outerVariable}`;
+            }
+
+            return innerFunction;
+        }
+
+        let closureFunc = outerFunction();
+        closureFunc();
+
+        // Example 3
+        function by(propName) {
+            return function (a, b) {
+                return a[propName] - b[propName];
+            }
+        }
+
+        const persons = [
+            { name: 'Joe', height: 72 },
+            { name: 'Rob', height: 70 },
+            { name: 'Nicholas', height: 66 }
+        ];
+
+        const arr_sorted = persons.slice().sort(by('height'));
+
+        let sortedPersons = arr_sorted.map(function (person) {
+            return `Name: ${person.name}, Height: ${person.height}`;
+        }).join('<br>');
+
+        document.getElementById("output3").innerHTML = `Example 3:<br>${sortedPersons}`;
+        console.log('Example 3: ', sortedPersons);
+
+        // Example 4
+        function outerNum(num) {
+            let int_num = num;
+            return function innerNum() {
+                console.log(int_num);
+                document.getElementById("output4").innerHTML += `Example 4: ${int_num}<br>`;
+            }
+        }
+
+        const num1 = outerNum(100);
+        const num2 = outerNum(300);
+
+        num1();
+        num2();
+
+        // Example 5
+        function createCounter() {
+            let count = 10;
+            return function () {
+                return ++count;
+            };
+        }
+
+        const counter1 = createCounter();
+        let counterResults = '';
+        for (let i = 0; i < 6; i++) {
+            let result = counter1();
+            counterResults += `Counter value: ${result}<br>`;
+            console.log(`Example 5: Counter value: ${result}`);
+        }
+        document.getElementById("output5").innerHTML = `Example 5:<br>${counterResults}`;
+
+        // Example 6
+        function createScores() {
+            let scores = 0;
+
+            function increaseScores(element) {
+                scores += element;
+                console.log(`Increasing score: ${scores}`);
+                document.getElementById("output6").innerHTML += `Increasing score: ${scores}<br>`;
+            }
+
+            function decreaseScores(element) {
+                scores -= element;
+                console.log(`Decreasing score: ${scores}`);
+                document.getElementById("output6").innerHTML += `Decreasing score: ${scores}<br>`;
+            }
+
+            function getScores() {
+                return scores;
+            }
+
+            return { increaseScores, decreaseScores, getScores };
+        }
+
+        const scores = createScores();
+        scores.increaseScores(4);
+        scores.decreaseScores(5);
+        console.log(`Example 6: Final score: ${scores.getScores()}`);
+        document.getElementById("output6").innerHTML += `Final score: ${scores.getScores()}<br>`;
+
+        // Example 7
+        function createButton() {
+            const button = document.createElement('button');
+            button.innerText = 'Click me';
+            button.addEventListener('click', function () {
+                console.log('Button clicked');
+                document.getElementById("output7").innerHTML = 'Button clicked';
+            });
+            document.body.appendChild(button);
+        }
+
+        createButton();
+
+        // Another Closure Example
+        function closureOuterFunction() {
+            let outerVariable = 'I am from outerFunction';
+
+            function innerFunction() {
+                console.log(outerVariable);
+                document.getElementById("output7").innerHTML += `<br>Another Closure Example: ${outerVariable}`;
+            }
+
+            return innerFunction;
+        }
+
+        let closureFunction = closureOuterFunction();
+        closureFunction();
+
+    </script>
+</body>
+
+</html>
