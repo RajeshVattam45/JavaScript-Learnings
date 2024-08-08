@@ -1,0 +1,9 @@
+JavaScript Learning Cpncepts List
+1. Variables
+2. Ajax
+3. Arrays methods
+4. Clousers
+5. ES6 Features
+6. Higher Order Functions
+7. Immutable Functions
+8. Asynchronous
