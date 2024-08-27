@@ -64,23 +64,24 @@
 
                     slideData.forEach(element => {
                         cardHtml += `
-                <div class="col-md-3">
-                    <div class="card mt-3 border rounded">
-                        <div class="card-id text-white fw-bold bg-dark text-center">${element.id}</div>
-                        <div class="card-title fw-bold w-100">${element.title}</div>
-                        <div class="card-description">${element.description}</div>
-                        <div class="card-image">
-                            <img class="w-100 h-100" src="${element.images[0]}" alt="${element.title}">
-                        </div>
-                    </div>
-                </div>`;
+                        <div class="col-md-3">
+                            <div class="card mt-3 border rounded">
+                                <div class="card-id text-white fw-bold bg-dark text-center">${element.id}</div>
+                                <div class="card-title fw-bold w-100">${element.title}</div>
+                                <div class="card-description">${element.description}</div>
+                                <div class="card-image">
+                                    <img class="w-100 h-100" src="${element.images[0]}" alt="${element.title}">
+                                </div>
+                            </div>
+                        </div>`;
                     });
 
                     container.innerHTML = `
-            <div class="row">
-                ${cardHtml}
-            </div>`;
-                } else if (xhr2.readyState === 4) {
+                        <div class="row">
+                            ${cardHtml}
+                        </div>`;
+                }
+                else if (xhr2.readyState === 4) {
                     container.innerHTML = 'Failed to fetch data';
                 }
             };

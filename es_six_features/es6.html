@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <title>ES6 Features</title>
 </head>
+
 <body>
     <div class="container">
         <h3>New Features in ES6</h3>
@@ -66,8 +68,8 @@
         <p id="log10-result"></p>
 
         <!-- Arrow Function -->
-         <h3>Arrow Function</h3>
-         <p id="arrow-function-result"></p>
+        <h3>Arrow Function</h3>
+        <p id="arrow-function-result"></p>
 
         <!-- spread and rease opearator -->
         <h3>Spread Opearator</h3>
@@ -86,18 +88,21 @@
         // ES6 features let keyword.
         let string = 'Hello World';
         let array = [1, 2, 4, 5, 7];
-        let example_3 = 8 * 6;
+        let multiplication = 8 * 6;
         let addition = 10 + 5;
         let subtraction = 100 - 23;
 
-        console.log(string); // Logging the string variable
+        // Logging the string variable.
+        console.log(string);
         document.getElementById("string").innerHTML = 'String: ' + string;
 
-        console.log(array); // Logging the array variable
+        // Logging the array variable.
+        console.log(array);
         document.getElementById("array").innerHTML = 'Array: ' + array.join(", ");
 
-        console.log(example_3); // Logging the example_3 variable
-        document.getElementById("example-3").innerHTML = 'Example 3: ' + example_3;
+        // Logging the example_3 variable.
+        console.log(multiplication);
+        document.getElementById("example-3").innerHTML = 'Example 3: ' + multiplication;
 
         console.log(addition); // Logging the addition variable
         document.getElementById("addition").innerHTML = 'Addition: ' + addition;
@@ -106,26 +111,26 @@
         document.getElementById("subtraction").innerHTML = 'Subtraction: ' + subtraction;
 
         // ES6 features const keyword.
-        const const_1 = 'Const keyword used to declare the variable with the constant value.';
-        const const_2 = 'Once we declare the value with const keyword the value cannot be changed.';
-        const const_3 = [1, 2, 3, 4, 5, 6];
-        const const_4 = 5 * 5;
-        const const_5 = 5 / 10;
+        const const_val_1 = 'Const keyword used to declare the variable with the constant value.';
+        const const_val_2 = 'Once we declare the value with const keyword the value cannot be changed.';
+        const const_val_3 = [1, 2, 3, 4, 5, 6];
+        const const_val_4 = 5 * 5;
+        const const_val_5 = 5 / 10;
 
-        console.log(const_1);
-        document.getElementById("const-1").innerHTML = const_1;
+        console.log(const_val_1);
+        document.getElementById("const-1").innerHTML = const_val_1;
 
-        console.log(const_2);
-        document.getElementById("const-2").innerHTML = const_2;
+        console.log(const_val_2);
+        document.getElementById("const-2").innerHTML = const_val_2;
 
-        console.log(const_3);
-        document.getElementById("const-3").innerHTML = 'Array: ' + const_3.join(", ");
+        console.log(const_val_3);
+        document.getElementById("const-3").innerHTML = 'Array: ' + const_val_3.join(", ");
 
-        console.log(const_4);
-        document.getElementById("const-4").innerHTML = 'Multiplication: ' + const_4;
+        console.log(const_val_4);
+        document.getElementById("const-4").innerHTML = 'Multiplication: ' + const_val_4;
 
-        console.log(const_5);
-        document.getElementById("const-5").innerHTML = 'Division: ' + const_5;
+        console.log(const_val_5);
+        document.getElementById("const-5").innerHTML = 'Division: ' + const_val_5;
 
         // Arrow functions
         let arrow_function = (a, b) => a + b;
@@ -311,7 +316,7 @@
         console.log(fruitList);
         document.getElementById("for-of-loop-result").innerHTML = `Fruits: ${fruitList}`;
 
-
     </script>
 </body>
+
 </html>

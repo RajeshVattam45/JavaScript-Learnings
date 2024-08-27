@@ -91,8 +91,8 @@
         // Block scope.
         // let, const keywords had block scope, these keyword are intruduced in 2015.
         // Variables that are declared inside a { } block cannot be accessed from outside the block.
-        let let_ = [1, 2, 3, 4, 5];
-        const _const = ['1', 'e', 'd', 'm'];
+        let let_variable = [1, 2, 3, 4, 5];
+        const const_variable = ['1', 'e', 'd', 'm'];
 
         function blockScope() {
             if (true) {
@@ -112,17 +112,17 @@
         // Global scope
         // If a variable decleared outside of any function has global scope we can access any where in the file. 
         // let, var, const.
-        var _var = 'Has global scope';
+        var var_variable = 'Has global scope';
 
         function globalScope() {
             // _var variable already defined outside function, now calling with in the function.
-            console.log(_var);
-            console.log(let_); // already decleared outside of the function.
-            console.log(_const);
+            console.log(var_variable);
+            console.log(let_variable); // already decleared outside of the function.
+            console.log(const_variable);
             document.getElementById("global-scope").innerHTML = 'Examples of Global scope';
-            document.getElementById("var").innerHTML = _var;
-            document.getElementById("let").innerHTML = let_;
-            document.getElementById("const").innerHTML = _const;
+            document.getElementById("var").innerHTML = var_variable;
+            document.getElementById("let").innerHTML = let_variable;
+            document.getElementById("const").innerHTML = const_variable;
 
         } globalScope();
 
