@@ -120,20 +120,20 @@
 
         // Using filter() method moving the all zeros to left side of array.
         const number_array = [1, 3, 4, 5, 0, 0, 0, 3, 9, 6];
-        let arry_zer = [];
+        let arry_zero = [];
         let array_non_zero = [];
         number_array.filter(element => {
             if (element === 0) {
-                arry_zer.push(element);
+                arry_zero.push(element);
             }
             else {
                 array_non_zero.push(element);
             }
         });
-        let metge_array = [...arry_zer, ...array_non_zero];
+        let merge_array = [...arry_zer, ...array_non_zero];
         let array_concat = arry_zer.concat(array_non_zero);
         document.getElementById("move-left-side-array").innerHTML = array_concat;
-        console.log(metge_array);
+        console.log(merge_array);
         console.log(array_concat);
 
         // Filter the even numbers.

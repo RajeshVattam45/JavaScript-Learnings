@@ -60,7 +60,7 @@
         { name: 'Murali', age: 16},
         { name: 'Sree', age: 25}
         ];
-        function fetData(element){
+        function fetchData(element){
             setTimeout(() => {
                 element.forEach(value => {
                     let contain = document.getElementById("persons-data");
@@ -69,14 +69,14 @@
                 });
             }, 8000);
         }
-        fetData(persons_data);
+        fetchData(persons_data);
 
         function initiallyDisplaying(){
             document.getElementById("initiall-data").innerHTML = 'Displaying data while page loads';
         }
         initiallyDisplaying();
 
-        const FruitsArray = ['Apple', 'Mange', 'Banana', 'Orange'];
+        const fruits_array = ['Apple', 'Mange', 'Banana', 'Orange'];
 
         function displayArray(element){
             let container = document.getElementById("after-two-seconds");
@@ -86,7 +86,7 @@
             });
             }, 2000);
         }
-        displayArray(FruitsArray);
+        displayArray(fruits_array);
 
         function addition(num_1, num_2) {
             return num_1 + num_2;
